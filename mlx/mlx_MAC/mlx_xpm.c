@@ -16,7 +16,6 @@ typedef struct  s_xpm_col
   int           col;
 } t_xpm_col;
 
-
 struct  s_col_name
 {
   char  *name;
@@ -191,7 +190,7 @@ void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())
 	RETURN;
 
       rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]);
-      /*      
+      /*
       if ((rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]))==-1)
 	{
 	  if (!(clip_data = malloc(4*width*height)) ||   // ok, nice size ..

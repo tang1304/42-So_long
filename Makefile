@@ -2,7 +2,10 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 SRCS = so_long.c \
-		map.c
+		map.c \
+		image.c \
+		colors.c \
+		key_hook.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f
@@ -35,7 +38,7 @@ _GREEN	:=	\033[1;32m
 
 # --- RULES --- #
 
-%.o :	%.c ${HEADERS} ${LIBFT}
+%.o :	%.c ${HEADERS} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} -I${MLX_DIR} -c $<
 
 ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
@@ -45,7 +48,7 @@ ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
 ${LIBFT}: FORCE
 		@${MAKE} ${LIBFT_DIR}
 
-${MLX_A}:
+${MLX_A}: FORCE
 		@${MAKE} -C ${MLX_DIR}
 
 FORCE:
