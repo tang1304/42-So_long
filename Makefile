@@ -3,9 +3,11 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 SRCS = so_long.c \
 		map.c \
+		map2.c \
 		image.c \
 		colors.c \
-		key_hook.c
+		key_hook.c \
+		utils.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f

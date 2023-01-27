@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:50:45 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/25 08:56:30 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/27 10:23:20 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define HEX_BASE_UPPER "0123456789ABCDEF"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 15
+#  define BUFFER_SIZE 10
 # endif
 
 typedef struct s_list
@@ -76,6 +76,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 /*	ft_printf	*/
+int		ft_putchar(int c);
 int		ft_printf(const char *str, ...);
 int		ft_printstr(char *str);
 int		ft_printnbr(int n);

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/25 15:38:01 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/27 17:10:58 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_H
 # include <unistd.h>
 # include <limits.h>
+# include <stdlib.h>
+# include <fcntl.h>
 # include <stdio.h>//TODO: a suppr
 # include "libft/libft.h"
 # include "mlx/mlx_MAC/mlx.h"
@@ -39,18 +41,39 @@ typedef struct s_img
 	int		width;
 }	t_img;
 
+typedef struct s_map
+{
+	int		x;
+	int		y;
+	char	**map;
+	int		width;
+	int		height;
+	int		p;
+	int		e;
+	int		c;
+}	t_map;
+
 typedef struct s_data
 {
-	t_img	img;
 	void	*mlx;
 	void	*win;
-	int		w;
-	int		h;
+	int		win_w;
+	int		win_h;
+	char	*tmp;
+	t_img	img;
+	t_map	map;
 }	t_data;
 
 /*	so_long.c	*/
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		ft_close(t_data *data);
+
+/*	map.c	*/
+int		map_init(t_data *data, int argc, char **argv);
+
+/*	map2.c	*/
+int		x_wall_check(t_data *data);
+int		y_wall_check(t_data *data);
 
 /*	image.c	*/
 void	put_square(t_data *data);
@@ -66,5 +89,8 @@ int		get_b(int trgb);
 
 /*	key_hook.c	*/
 int		ft_keyhook(int keycode, t_data *data);
+
+/*	utils.c	*/
+char	*ft_strjoin_sl(char *s1, char *s2);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:26:41 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/25 08:27:01 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/26 14:00:20 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_printchar(int c)
+int	ft_putchar(int c)
 {
 	return (write(1, &c, 1));
 }
