@@ -6,44 +6,36 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/27 17:31:25 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 16:14:37 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	map_parsing(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	data->map.map = ft_split(data->tmp, '\n');
-	if (!data->map.map)
-		return (0);
-	if (!y_wall_check(data))
-		return (0);
-//	ft_printf("ici\n");
-	if (!x_wall_check(data))
-		return (0);
-	return (1);
-}
-
-static void	get_map(t_data *data, int fd)
+static int	get_map(t_data *data, int fd)//TODO: verif des free
 {
 	char	*temp;
 
 	data->map.height = 0;
 	temp = get_next_line(fd);
+	if (!temp)
+		return (0);
 	data->tmp = ft_strdup(temp);
+	if (!data->tmp)
+		return (free(temp), 0);
 	free(temp);
 	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
+		if (!temp)
+			return (free(data_tmp), 0);
 		data->map.height++;
 		data->tmp = ft_strjoin_sl(data->tmp, temp);
+		if (!data->tmp)
+			return (free(temp), 0);
 		free(temp);
 	}
-//	ft_printf("%s\n", data->temp);
+	return (1);
 }
 
 static int	map_char_check(t_data *data)
@@ -94,24 +86,20 @@ int	map_init(t_data *data, int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_printf("Error\nWrong argument\n");
-//		exit(EXIT_FAILURE);
-		return (0);
+		return (0);//TODO remplacer par "exit(EXIT_FAILURE)"
 	}
 	if (!map_format(argv[1]))
-//		exit(EXIT_FAILURE);
-		return (0);
+		return (0);//TODO remplacer par "exit(EXIT_FAILURE)"
 	fd = open(argv[1], O_RDONLY);
-	get_map(data, fd);
-	if (!&get_map)
+	if (!get_map(data, fd))
 	{
 		ft_printf("Error\nGet_map crashed\n");
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);//TODO remplacer par "exit(EXIT_FAILURE)"
 	}
 	close(fd);
 	if (!map_char_check(data))
-//		exit(EXIT_FAILURE);
-		return (0);
-	map_parsing(data);
-	free(data->tmp);
+		return (0);//TODO remplacer par "exit(EXIT_FAILURE)"
+	if (!map_parsing(data))
+		return (0);//TODO remplacer par "exit(EXIT_FAILURE)"
 	return (1);
 }

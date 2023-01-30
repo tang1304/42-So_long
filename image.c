@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/26 14:35:48 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 11:45:40 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	put_background(t_data *data)
 	delta_color = ((color_max - color_min) / 1280);
 	color = color_max;
 	x = 0;
-	data->img.img = mlx_new_image(data->mlx, 1280, 720);
+	data->img.img = mlx_new_image(data->mlx, 1280, 720); //TODO: a proteger
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 			&data->img.line_length, &data->img.endian);
 	while (x < 1280)

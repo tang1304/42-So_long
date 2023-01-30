@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:51:51 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/27 13:32:49 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 15:54:47 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,26 @@ char	*ft_strjoin_sl(char *s1, char *s2)
 	dest[i] = '\0';
 	free(s1);
 	return (dest);
+}
+
+void	ft_free_map(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	i--;
+	while (i >= 0)
+	{
+		free(str[i]);
+		i--;
+	}
+	free(str);
+}
+
+void	ft_free_maps(t_data *data)
+{
+	ft_free_map(data->map.map);
+	ft_free_map(data->mapcpy);
 }

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/27 17:10:58 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 15:51:16 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	int		x;
-	int		y;
+	int		p_x;
+	int		p_y;
 	char	**map;
 	int		width;
 	int		height;
@@ -60,6 +60,7 @@ typedef struct s_data
 	int		win_w;
 	int		win_h;
 	char	*tmp;
+	char	**mapcpy;
 	t_img	img;
 	t_map	map;
 }	t_data;
@@ -70,8 +71,10 @@ int		ft_close(t_data *data);
 
 /*	map.c	*/
 int		map_init(t_data *data, int argc, char **argv);
+void	ft_free(t_data *data);
 
 /*	map2.c	*/
+int		map_parsing(t_data *data);
 int		x_wall_check(t_data *data);
 int		y_wall_check(t_data *data);
 
@@ -92,5 +95,8 @@ int		ft_keyhook(int keycode, t_data *data);
 
 /*	utils.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);
+void	ft_free_map(char **str);
+void	ft_free_maps(t_data *data);
+void	ft_free(t_data *data);
 
 #endif

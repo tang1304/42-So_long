@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/27 15:19:27 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/30 15:55:10 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,22 @@ static void	data_init(t_data *data)
 	data->map.p = 0;
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv)//TODO ; securiser fonction mlx renvoyant un void*
 {
 	t_data	data;
 	// (void)argc;
 	// (void)argv;
 
-	// data.mlx = mlx_init();
+	// data.mlx = mlx_init(); //TODO: a proteger
 	data_init(&data);
-	map_init(&data, argc, argv);
-	if (!&map_init)
+	if (!map_init(&data, argc, argv))
 		return (0);
-	// int *leaks = malloc(100000);
-	// (void) leaks;
 	// data.win = mlx_new_window(data.mlx, 1280, 720, "So_long");
 	// put_background(&data);
 	// put_square(&data);
 	// put_object(&data);
 	// mlx_hook(data.win, 2, 1L << 0, ft_keyhook, &data);
 	// mlx_loop(data.mlx);
+	ft_free_maps(&data);
 	return (0);
 }
