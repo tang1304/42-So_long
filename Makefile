@@ -41,7 +41,7 @@ _GREEN	:=	\033[1;32m
 # --- RULES --- #
 
 %.o :	%.c ${HEADERS} ${LIBFT} ${MLX_A}
-		${CC} ${CFLAGS} -I${MLX_DIR} -c $<
+		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $<
 
 ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} ${OBJ} ${LIBFT} ${MLX_A} ${MLX_FLAGS} -o ${NAME}
@@ -65,7 +65,7 @@ clean :
 
 fclean :	clean
 		@${MAKE} fclean ${LIBFT_DIR}
-		@${MAKE} fclean -C ${MLX_DIR}
+ #		@${MAKE} fclean -C ${MLX_DIR}
 		${RM} ${NAME}
 		@echo "${_RED}### Removed ${NAME} ###${_NOC}"
 

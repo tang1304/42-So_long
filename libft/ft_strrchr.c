@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:29:05 by tgellon           #+#    #+#             */
-/*   Updated: 2022/11/24 11:12:37 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/31 09:22:03 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 
 	i = ft_strlen(s);
-	while (i >= 0)
+	while (i)
 	{
 		if (s[i] == (char)c)
 			return (&((char *)s)[i]);

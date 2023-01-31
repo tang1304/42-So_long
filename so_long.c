@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/30 15:55:10 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/31 17:21:32 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int	ft_close(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
-//	exit(EXIT_SUCCESS);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 static void	data_init(t_data *data)
@@ -34,22 +33,25 @@ static void	data_init(t_data *data)
 	data->map.p = 0;
 }
 
-int	main(int argc, char **argv)//TODO ; securiser fonction mlx renvoyant un void*
+int	main(int argc, char **argv)//TODO: securiser fonction mlx renvoyant un void*
 {
 	t_data	data;
-	// (void)argc;
-	// (void)argv;
 
-	// data.mlx = mlx_init(); //TODO: a proteger
+	data.mlx = mlx_init();
+	if (!mlx_init())
+		return (ft_printf("Error\nMlx error\n"), 0);
 	data_init(&data);
 	if (!map_init(&data, argc, argv))
 		return (0);
-	// data.win = mlx_new_window(data.mlx, 1280, 720, "So_long");
-	// put_background(&data);
-	// put_square(&data);
-	// put_object(&data);
-	// mlx_hook(data.win, 2, 1L << 0, ft_keyhook, &data);
-	// mlx_loop(data.mlx);
+	data.win = mlx_new_window(data.mlx, (data.map.width * 64),
+			(data.map.height * 64), "So_long : La Maison");
+	put_map(&data);
+	put_background(&data);
+	put_square(&data);
+	put_object(&data);
+	mlx_hook(data.win, 2, 1L << 0, keyhook, &data);
+	mlx_hook(data.win, 17, 0, ft_close, &data);
+	mlx_loop(data.mlx);
 	ft_free_maps(&data);
 	return (0);
 }

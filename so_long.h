@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/30 15:51:16 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/31 17:39:58 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,19 @@
 # include "mlx/mlx_MAC/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
 
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define RED_CROSS 33
+
+# define WALL "./sprites/wall.xpm"
+# define OBSTACLE "./sprites/obstacle.xpm"
+# define PLAYER "./sprites/player.xpm"
+# define COLLECTIBLE "./sprites/collectible.xpm"
+# define FLOOR "./sprites/floor.xpm"
+# define EXIT "./sprites/exit.xpm"
 
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
@@ -82,6 +90,7 @@ int		y_wall_check(t_data *data);
 void	put_square(t_data *data);
 void	put_object(t_data *data);
 void	put_background(t_data *data);
+int		put_map(t_data *data);
 
 /*	colors.c	*/
 int		create_trgb(int t, int r, int g, int b);
@@ -91,12 +100,11 @@ int		get_g(int trgb);
 int		get_b(int trgb);
 
 /*	key_hook.c	*/
-int		ft_keyhook(int keycode, t_data *data);
+int		keyhook(int keycode, t_data *data);
 
 /*	utils.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);
 void	ft_free_map(char **str);
 void	ft_free_maps(t_data *data);
-void	ft_free(t_data *data);
 
 #endif

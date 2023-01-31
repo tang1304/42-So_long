@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/30 16:14:37 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/01/31 10:55:02 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	get_map(t_data *data, int fd)//TODO: verif des free
 	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
-		if (!temp)
-			return (free(data_tmp), 0);
 		data->map.height++;
 		data->tmp = ft_strjoin_sl(data->tmp, temp);
 		if (!data->tmp)

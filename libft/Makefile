@@ -21,7 +21,7 @@ HEADER = libft.h
 RAN = ranlib
 
 %.o :	%.c ${HEADER}
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME} :	${OBJ}
 		ar rc ${NAME} ${OBJ}
