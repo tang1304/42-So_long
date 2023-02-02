@@ -6,19 +6,11 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/31 17:21:32 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/02 20:03:27 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->img.addr + ((y * data->img.line_length) + (x * (data->img.bpp / 8)));
-	*(unsigned int *)dst = color;
-}
 
 int	ft_close(t_data *data)
 {
@@ -44,11 +36,9 @@ int	main(int argc, char **argv)//TODO: securiser fonction mlx renvoyant un void*
 	if (!map_init(&data, argc, argv))
 		return (0);
 	data.win = mlx_new_window(data.mlx, (data.map.width * 64),
-			(data.map.height * 64), "So_long : La Maison");
-	put_map(&data);
+			(data.map.height * 64), "So_long");
 	put_background(&data);
-	put_square(&data);
-	put_object(&data);
+	put_map(&data);
 	mlx_hook(data.win, 2, 1L << 0, keyhook, &data);
 	mlx_hook(data.win, 17, 0, ft_close, &data);
 	mlx_loop(data.mlx);

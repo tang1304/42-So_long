@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/31 17:39:58 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/02 20:03:12 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <stdio.h>//TODO: a suppr
 # include "libft/libft.h"
-# include "mlx/mlx_MAC/mlx.h"
 # include "mlx/mlx_linux/mlx.h"
 
 # define ESC 65307
@@ -30,10 +29,11 @@
 
 # define WALL "./sprites/wall.xpm"
 # define OBSTACLE "./sprites/obstacle.xpm"
-# define PLAYER "./sprites/player.xpm"
+# define PLAYER "./sprites/player_front_still.xpm"
 # define COLLECTIBLE "./sprites/collectible.xpm"
 # define FLOOR "./sprites/floor.xpm"
-# define EXIT "./sprites/exit.xpm"
+# define EXIT_OFF "./sprites/exit_off.xpm"
+# define EXIT_ON "./sprites/exit_on.xpm"
 
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
@@ -87,10 +87,10 @@ int		x_wall_check(t_data *data);
 int		y_wall_check(t_data *data);
 
 /*	image.c	*/
-void	put_square(t_data *data);
-void	put_object(t_data *data);
-void	put_background(t_data *data);
+int		put_img(t_data *data, char *path, int x, int y);
 int		put_map(t_data *data);
+int		put_background(t_data *data);
+int		choose_img(t_data *data, char c, int x, int y);
 
 /*	colors.c	*/
 int		create_trgb(int t, int r, int g, int b);
@@ -101,6 +101,9 @@ int		get_b(int trgb);
 
 /*	key_hook.c	*/
 int		keyhook(int keycode, t_data *data);
+
+/*	move.c	*/
+int		move(t_data *data, int y, int x);
 
 /*	utils.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);
