@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/03 09:47:16 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/03 17:30:59 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@
 # define D 100
 # define RED_CROSS 33
 
-# define WALL "./sprites/wall.xpm"
+# define WALL_L "./sprites/wall_x0.xpm"
+# define WALL_R "./sprites/wall_xmax.xpm"
+# define WALL_U "./sprites/wall_y0.xpm"
+# define WALL_D "./sprites/wall_ymax.xpm"
+# define WALL_UL "./sprites/wall_x0_y0.xpm"
+# define WALL_UR "./sprites/wall_xmax_y0.xpm"
+# define WALL_DL "./sprites/wall_x0_ymax.xpm"
+# define WALL_DR "./sprites/wall_xmax_ymax.xpm"
 # define OBSTACLE "./sprites/obstacle.xpm"
 # define COLLECTIBLE "./sprites/collectible.xpm"
 # define FLOOR "./sprites/floor.xpm"
@@ -56,6 +63,8 @@ typedef struct s_map
 {
 	int		p_x;
 	int		p_y;
+	int		e_x;
+	int		e_y;
 	char	**map;
 	int		width;
 	int		height;
@@ -70,6 +79,8 @@ typedef struct s_data
 	void	*win;
 	int		win_w;
 	int		win_h;
+	int		c_nbr;
+	int		moves;
 	char	*tmp;
 	char	**mapcpy;
 	t_img	img;

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:47:38 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/31 15:14:42 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/03 12:07:24 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	map_parsing(t_data *data)
 	if (!x_wall_check(data))
 		return (0);
 	get_p_position(data);
+	data->c_nbr = data->map.c;
 	path_check(data, data->map.p_x, data->map.p_y);
 	if (data->map.c != 0 || data->map.p != 0)
 	{

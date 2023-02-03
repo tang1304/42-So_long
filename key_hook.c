@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:26:21 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/03 11:20:08 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/03 12:07:56 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	keyhook(int keycode, t_data *data)
 	{
 		move(data, 0, 1, D);
 	}
-	if (data->map.map[data->map.p_y][data->map.p_x] == 'E')
+	if (data->map.map[data->map.p_y][data->map.p_x] == 'E' && data->c_nbr == 0)
 		ft_close(data);
 	return (0);
 }
