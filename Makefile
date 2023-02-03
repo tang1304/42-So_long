@@ -7,7 +7,8 @@ SRCS = so_long.c \
 		image.c \
 		colors.c \
 		key_hook.c \
-		utils.c
+		utils.c \
+		move.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f

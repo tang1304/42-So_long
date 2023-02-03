@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/02 20:03:06 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/03 09:47:32 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	choose_img(t_data *data, char c, int x, int y)
 	else if (c == 'C')
 		put_img(data, COLLECTIBLE, x, y);
 	else if (c == 'P')
-		put_img(data, PLAYER, x, y);
+		put_img(data, P_FRONT_STILL, x, y);
 	else if (c == 'E')
 		put_img(data, EXIT_OFF, x, y);
 	return (1);

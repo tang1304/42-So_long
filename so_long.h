@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/02 20:03:12 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/03 09:47:16 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@
 
 # define WALL "./sprites/wall.xpm"
 # define OBSTACLE "./sprites/obstacle.xpm"
-# define PLAYER "./sprites/player_front_still.xpm"
 # define COLLECTIBLE "./sprites/collectible.xpm"
 # define FLOOR "./sprites/floor.xpm"
+# define P_FRONT_STILL "./sprites/player_front_still.xpm"
+# define P_BACK_STILL "./sprites/player_back_still.xpm"
+# define P_LEFT_STILL "./sprites/player_left_still.xpm"
+# define P_RIGHT_STILL "./sprites/player_right_still.xpm"
 # define EXIT_OFF "./sprites/exit_off.xpm"
 # define EXIT_ON "./sprites/exit_on.xpm"
 
@@ -103,7 +106,7 @@ int		get_b(int trgb);
 int		keyhook(int keycode, t_data *data);
 
 /*	move.c	*/
-int		move(t_data *data, int y, int x);
+int		move(t_data *data, int y, int x, int keycode);
 
 /*	utils.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);
