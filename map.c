@@ -6,12 +6,13 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/31 10:55:02 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/04 11:56:58 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Puts all the lines of the .ber file in a string*/
 static int	get_map(t_data *data, int fd)//TODO: verif des free
 {
 	char	*temp;
@@ -36,6 +37,7 @@ static int	get_map(t_data *data, int fd)//TODO: verif des free
 	return (1);
 }
 
+/*check the chars forming the map*/
 static int	map_char_check(t_data *data)
 {
 	int	i;
@@ -65,6 +67,7 @@ static int	map_char_check(t_data *data)
 	return (1);
 }
 
+/*Check the .ber format*/
 static int	map_format(char *argv)
 {
 	int	i;
@@ -77,6 +80,7 @@ static int	map_format(char *argv)
 	return (0);
 }
 
+/*main fuction to check the map*/
 int	map_init(t_data *data, int argc, char **argv)
 {
 	int	fd;

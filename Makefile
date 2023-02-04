@@ -5,6 +5,7 @@ SRCS = so_long.c \
 		map.c \
 		map2.c \
 		image.c \
+		walls.c \
 		colors.c \
 		key_hook.c \
 		utils.c \

@@ -6,12 +6,13 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:47:38 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/03 12:07:24 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/04 12:58:02 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*checks there are only '1' on the first and last column */
 int	x_wall_check(t_data *data)
 {
 	size_t	i;
@@ -39,6 +40,7 @@ int	x_wall_check(t_data *data)
 	return (1);
 }
 
+/*checks there are only '1' on the first and last line */
 int	y_wall_check(t_data *data)
 {
 	size_t	i;
@@ -68,6 +70,7 @@ int	y_wall_check(t_data *data)
 	return (1);
 }
 
+/*Gets the coordinates of the P*/
 static void	get_p_position(t_data *data)
 {
 	int	i;
@@ -88,6 +91,7 @@ static void	get_p_position(t_data *data)
 	}
 }
 
+/*check if the path of the player is valid*/
 static void	path_check(t_data *data, int x, int y)
 {
 	if (data->mapcpy[y][x] == 'P')
@@ -112,6 +116,7 @@ static void	path_check(t_data *data, int x, int y)
 		path_check(data, x, y + 1);
 }
 
+/*Puts the string on a **char, and does the checks above */
 int	map_parsing(t_data *data)
 {
 	data->map.map = ft_split(data->tmp, '\n');

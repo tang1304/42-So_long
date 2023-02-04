@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/03 17:30:59 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/04 12:49:38 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ int		put_img(t_data *data, char *path, int x, int y);
 int		put_map(t_data *data);
 int		put_background(t_data *data);
 int		choose_img(t_data *data, char c, int x, int y);
+
+/*	walls.c	*/
+int		put_walls(t_data *data, int x, int y);
 
 /*	colors.c	*/
 int		create_trgb(int t, int r, int g, int b);

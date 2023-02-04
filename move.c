@@ -6,12 +6,13 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/03 17:53:16 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/04 13:08:22 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* Displays the number of moves in the game window */
 static int	moves_display(t_data *data)
 {
 	char	*nbr;
@@ -24,27 +25,42 @@ static int	moves_display(t_data *data)
 	if (!display)
 		return (free(nbr), 0);
 	if (!put_img(data, WALL_UL, 0, 0))
-		return (0);
+		return (free(nbr), free(display), 0);
 	if (!put_img(data, WALL_U, 1, 0))
-		return (0);
+		return (free(nbr), free(display), 0);
 	mlx_string_put(data->mlx, data->win, 20, 20, 0x00E11B, display);
 	free(nbr);
 	free(display);
 	return (1);
 }
 
-static int	direction(t_data *data, int keycode)//TODO: retours de put_img
+/* Puts the character sprite depending on the key pressed */
+static int	direction(t_data *data, int keycode)
 {
 	if (keycode == W)
-		put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y);
+	{
+		if (!put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y))
+			return (0);
+	}
 	else if (keycode == S)
-		put_img(data, P_FRONT_STILL, data->map.p_x, data->map.p_y);
+	{
+		if (!put_img(data, P_FRONT_STILL, data->map.p_x, data->map.p_y))
+			return (0);
+	}
 	else if (keycode == A)
-		put_img(data, P_LEFT_STILL, data->map.p_x, data->map.p_y);
+	{
+		if (!put_img(data, P_LEFT_STILL, data->map.p_x, data->map.p_y))
+			return (0);
+	}
 	else if (keycode == D)
-		put_img(data, P_RIGHT_STILL, data->map.p_x, data->map.p_y);
+	{
+		if (!put_img(data, P_RIGHT_STILL, data->map.p_x, data->map.p_y))
+			return (0);
+	}
+	return (1);
 }
 
+/* function done when a key is pressed */
 int	move(t_data *data, int y, int x, int keycode)
 {
 	if (!direction(data, keycode))
