@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/04 11:56:58 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:07:50 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static int	map_char_check(t_data *data)
 	{
 		if (data->tmp[i] != '0' && data->tmp[i] != '1' && data->tmp[i] != 'C'
 			&& data->tmp[i] != 'E' && data->tmp[i] != 'P'
-			&& data->tmp[i] != '\n')
+			&& data->tmp[i] != 'D' && data->tmp[i] != '\n')
 		{
-			ft_printf("Error\nOnly '0', '1', 'P', 'C' and 'E' authorized\n");
+			ft_printf("Error\nOnly '0', '1', 'P', 'C', 'E', 'D' authorized\n");
 			return (0);
 		}
 		if (data->tmp[i] == 'C')

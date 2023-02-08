@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/04 13:08:22 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:16:19 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int	move(t_data *data, int y, int x, int keycode)
 {
 	if (!direction(data, keycode))
 		return (0);
-	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == '1')
+	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == '1'
+		|| data->map.map[data->map.p_y + y][data->map.p_x + x] == 'D')
 		return (0);
 	else if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C'
 				&& data->c_nbr >= 1)

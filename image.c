@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/07 09:28:21 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:24:24 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ int	sub_choose_img(t_data *data, char c, int x, int y)
 			return (0);
 		data->map.e_x = x;
 		data->map.e_y = y;
+	}
+	else if (c == 'D')
+	{
+		if (!put_img(data, D_STILL, x, y))
+			return (0);
+		data->d_nbr++;
 	}
 	return (1);
 }

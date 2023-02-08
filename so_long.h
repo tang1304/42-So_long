@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/07 14:45:51 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:31:03 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define D 100
 # define RED_CROSS 33
 
+# define ANIMATION 1500
+
 # define WALL_L "./sprites/wall_x0.xpm"
 # define WALL_R "./sprites/wall_xmax.xpm"
 # define WALL_U "./sprites/wall_y0.xpm"
@@ -44,6 +46,9 @@
 # define P_RIGHT_STILL "./sprites/player_right_still.xpm"
 # define EXIT_OFF "./sprites/exit_off.xpm"
 # define EXIT_ON "./sprites/exit_on.xpm"
+# define D_STILL "./sprites/ennemy_still.xpm"
+# define D_LEFT "./sprites/ennemy_left.xpm"
+# define D_RIGHT "./sprites/ennemy_right.xpm"
 
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
@@ -78,6 +83,7 @@ typedef struct s_data
 	int		win_w;
 	int		win_h;
 	int		c_nbr;
+	int		d_nbr;
 	int		moves;
 	int		frames;
 	char	*tmp;

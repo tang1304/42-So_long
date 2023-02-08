@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:03:39 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/07 17:04:18 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:29:45 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 static int	change_anim(t_data *data, char c, int x, int y)
 {
-	if (c == 'C' && data->map.c_count == 1)
-	{
-		put_img(data, WALL_D, x, y);
-	}
-	else if (c == 'C' && data->map.c_count == 2)
-	{
-		put_img(data, COLLECTIBLE, x, y);
+	int	d;
+
+	d = data->d_nbr;
+	if (c == 'D' && data->map.c_count <= d)
+		put_img(data, D_LEFT, x, y);
+	else if (c == 'D' && data->map.c_count <= d * 2)
+		put_img(data, D_STILL, x, y);
+	else if (c == 'D' && data->map.c_count <= d * 3)
+		put_img(data, D_RIGHT, x, y);
+	else if (c == 'D' && data->map.c_count <= d * 4)
+		put_img(data, D_STILL, x, y);
+	if (data->map.c_count == d * 4)
 		data->map.c_count = 0;
-	}
 	data->map.c_count++;
 	return (1);
 }
@@ -38,7 +42,7 @@ static int	animate(t_data *data)
 		x = 0;
 		while (data->map.map[y][x])
 		{
-			if (data->map.map[y][x] == 'C')
+			if (data->map.map[y][x] == 'D')
 			{
 				if (!change_anim(data, data->map.map[y][x], x, y))
 					return (0);
@@ -52,15 +56,13 @@ static int	animate(t_data *data)
 
 int	frame_rendering(t_data *data)
 {
-	data->frames++;
-	if (data->frames == 1000)
+	if (data->frames < ANIMATION)
 	{
-		animate(data);
+		data->frames++;
+		return (0);
 	}
-	else if (data->frames == 2000)
-	{
-		animate(data);
-	}
-//	data->frames = 0;
+	else
+		data->frames = 0;
+	animate(data);
 	return (1);
 }

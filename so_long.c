@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/07 12:24:33 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 18:24:49 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	data_init(t_data *data)
 	data->moves = 0;
 	data->frames = 0;
 	data->map.c_count = 0;
+	data->d_nbr = 0;
 }
 
 int	main(int argc, char **argv)//TODO: securiser fonction mlx renvoyant un void*
