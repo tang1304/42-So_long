@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/08 18:31:03 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 19:25:44 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int		keyhook(int keycode, t_data *data);
 /*	move.c	*/
 int		move(t_data *data, int y, int x, int keycode);
 
-/*	animation.c	*/
+/*	anim_enemy.c	*/
 int		frame_rendering(t_data *data);
 
 /*	utils.c	*/

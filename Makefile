@@ -10,7 +10,7 @@ SRCS = so_long.c \
 		key_hook.c \
 		utils.c \
 		move.c \
-		animation.c
+		anim_enemy.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f
