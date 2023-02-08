@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/04 12:49:38 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 14:45:51 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,8 @@
 
 typedef struct s_img
 {
+	void	*collect;
 	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
 	int		height;
 	int		width;
 }	t_img;
@@ -71,6 +68,7 @@ typedef struct s_map
 	int		p;
 	int		e;
 	int		c;
+	int		c_count;
 }	t_map;
 
 typedef struct s_data
@@ -81,6 +79,7 @@ typedef struct s_data
 	int		win_h;
 	int		c_nbr;
 	int		moves;
+	int		frames;
 	char	*tmp;
 	char	**mapcpy;
 	t_img	img;
@@ -121,6 +120,9 @@ int		keyhook(int keycode, t_data *data);
 
 /*	move.c	*/
 int		move(t_data *data, int y, int x, int keycode);
+
+/*	animation.c	*/
+int		frame_rendering(t_data *data);
 
 /*	utils.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);

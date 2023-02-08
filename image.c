@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/04 12:49:50 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 09:28:21 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	sub_choose_img(t_data *data, char c, int x, int y)
 	return (1);
 }
 
-/* selects the good sprite depending ont the char */
+/* selects the good sprite depending on the char */
 int	choose_img(t_data *data, char c, int x, int y)
 {
 	if (c == '1' && (x == 0 || x == data->map.width - 1 || y == 0

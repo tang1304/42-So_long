@@ -9,16 +9,14 @@ SRCS = so_long.c \
 		colors.c \
 		key_hook.c \
 		utils.c \
-		move.c
+		move.c \
+		animation.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f
 HEADERS = so_long.h
 LIBFT = libft/libft.a
 LIBFT_DIR = -C ./libft/
-#MLX_A = ${MLX_DIR}libmlx.a
-#MLX_DIR = mlx/mlx_MAC/
-#MLX_FLAGS = -Lmlx/mlx_MAC -lmlx -framework OpenGL -framework AppKit
 
 # --- OS SELECTION --- #
 
@@ -26,7 +24,7 @@ UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
 		MLX_A	=	${MLX_DIR}libmlx.a
 		MLX_DIR	=	mlx/mlx_linux/
-		MLX_FLAGS = -lm -L/usr/lib -lXext -lX11 -lz
+		MLX_FLAGS = -lm -L/usr/lib -lXext -lX11 # -lz
 	endif
 	ifeq ($(UNAME_S),Darwin)
 		MLX_A	=	${MLX_DIR}libmlx.a
@@ -67,7 +65,7 @@ clean :
 
 fclean :	clean
 		@${MAKE} fclean ${LIBFT_DIR}
- #		@${MAKE} fclean -C ${MLX_DIR}
+#		@${MAKE} fclean -C ${MLX_DIR}
 		${RM} ${NAME}
 		@echo "${_RED}### Removed ${NAME} ###${_NOC}"
 
