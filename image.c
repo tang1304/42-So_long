@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/08 18:24:24 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/09 08:54:56 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,54 +53,58 @@ int	put_background(t_data *data)
 	return (1);
 }
 
-/* rest of the function below */
-int	sub_choose_img(t_data *data, char c, int x, int y)
+int	put_walls(t_data *data, int x, int y)
 {
-	if (c == 'P')
-	{
-		if (!put_img(data, P_FRONT_STILL, x, y))
-			return (0);
-	}
-	else if (c == 'E')
-	{
-		if (!put_img(data, EXIT_OFF, x, y))
-			return (0);
-		data->map.e_x = x;
-		data->map.e_y = y;
-	}
-	else if (c == 'D')
-	{
-		if (!put_img(data, D_STILL, x, y))
-			return (0);
-		data->d_nbr++;
-	}
+	int	tmp;
+
+	if (x == 0 && y == 0)
+		tmp = put_img(data, WALL_UL, x, y);
+	else if (x == data->map.width - 1 && y == 0)
+		tmp = put_img(data, WALL_UR, x, y);
+	else if (x == 0 && y == data->map.height - 1)
+		tmp = put_img(data, WALL_DL, x, y);
+	else if (x == data->map.width - 1 && y == data->map.height - 1)
+		tmp = put_img(data, WALL_DR, x, y);
+	else if (x == 0 && y != data->map.height - 1 && y != 0)
+		tmp = put_img(data, WALL_L, x, y);
+	else if (x == data->map.width - 1 && y != data->map.height - 1 && y != 0)
+		tmp = put_img(data, WALL_R, x, y);
+	else if (x != data->map.width - 1 && x != 0 && y == 0)
+		tmp = put_img(data, WALL_U, x, y);
+	else if (x != data->map.width - 1 && x != 0 && y == data->map.height - 1)
+		tmp = put_img(data, WALL_D, x, y);
+	if (tmp == 0)
+		return (0);
 	return (1);
 }
 
 /* selects the good sprite depending on the char */
 int	choose_img(t_data *data, char c, int x, int y)
 {
+	int	tmp;
+
 	if (c == '1' && (x == 0 || x == data->map.width - 1 || y == 0
 			|| y == data->map.height - 1))
-	{
-		if (!put_walls(data, x, y))
-			return (0);
-	}
+		tmp = put_walls(data, x, y);
 	else if (c == '1')
-	{
-		if (!put_img(data, OBSTACLE, x, y))
-			return (0);
-	}
+		tmp = put_img(data, OBSTACLE, x, y);
 	else if (c == 'C')
+		tmp = put_img(data, COLLECTIBLE, x, y);
+	if (c == 'P')
+		tmp = put_img(data, P_FRONT_STILL, x, y);
+	else if (c == 'E')
 	{
-		if (!put_img(data, COLLECTIBLE, x, y))
-			return (0);
+		tmp = put_img(data, EXIT_OFF, x, y);
+		data->map.e_x = x;
+		data->map.e_y = y;
 	}
-	else
+	else if (c == 'D')
 	{
-		if (!sub_choose_img(data, c, x, y))
-			return (0);
+		tmp = put_img(data, D_STILL, x, y);
+		data->d_nbr++;
 	}
+	if (tmp == 0)
+		return (0);
 	return (1);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_anim.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/09 13:54:24 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/09 15:29:18 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ static int	moves_display(t_data *data)
 }
 
 /* Puts the character sprite depending on the key pressed */
-static int	direction(t_data *data, int keycode)
-{
-	int	tmp;
+// static int	direction(t_data *data, int keycode)
+// {
+// 	int	tmp;
 
-	if (keycode == W)
-		tmp = put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y);
-	else if (keycode == S)
-		tmp = put_img(data, P_FRONT_STILL, data->map.p_x, data->map.p_y);
-	else if (keycode == A)
-		tmp = put_img(data, P_LEFT_STILL, data->map.p_x, data->map.p_y);
-	else if (keycode == D)
-		tmp = put_img(data, P_RIGHT_STILL, data->map.p_x, data->map.p_y);
-	if (tmp == 0)
-		return (0);
-	return (1);
-}
+// 	if (keycode == W)
+// 		tmp = put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y);
+// 	else if (keycode == S)
+// 		tmp = put_img(data, P_FRONT_STILL, data->map.p_x, data->map.p_y);
+// 	else if (keycode == A)
+// 		tmp = put_img(data, P_LEFT_STILL, data->map.p_x, data->map.p_y);
+// 	else if (keycode == D)
+// 		tmp = put_img(data, P_RIGHT_STILL, data->map.p_x, data->map.p_y);
+// 	if (tmp == 0)
+// 		return (0);
+// 	return (1);
+// }
 
 static int	move_2(t_data *data, int y, int x)
 {
@@ -76,11 +76,11 @@ static int	move_2(t_data *data, int y, int x)
 /* function done when a key is pressed */
 int	move(t_data *data, int y, int x, int keycode)
 {
-	if (!direction(data, keycode))
-		return (0);
+//	if (!direction(data, keycode))
+//		return (0);
 	if (!move_2(data, y, x))
 		return (0);
-	put_img(data, FLOOR, data->map.p_x, data->map.p_y);
+	anim_player(data, keycode, x, y);
 	if (data->c_nbr == 0)
 		put_img(data, EXIT_ON, data->map.e_x, data->map.e_y);
 	data->map.p_x += x;
@@ -89,7 +89,7 @@ int	move(t_data *data, int y, int x, int keycode)
 	ft_printf("Your moves : %d\n", data->moves);
 	if (!moves_display(data))
 		return (0);
-	if (!direction(data, keycode))
-		return (0);
+//	if (!direction(data, keycode))
+//		return (0);
 	return (1);
 }

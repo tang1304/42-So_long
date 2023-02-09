@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animation.c                                        :+:      :+:    :+:   */
+/*   anim_enemy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:03:39 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/08 18:49:35 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/09 15:50:28 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 static int	change_anim_enemy(t_data *data, char c, int x, int y)
 {
-	int	d;
+	int	tmp;
 
-	d = data->d_nbr;
-	if (c == 'D' && data->map.c_count <= d)
-		put_img(data, D_LEFT, x, y);
-	else if (c == 'D' && data->map.c_count <= d * 2)
-		put_img(data, D_STILL, x, y);
-	else if (c == 'D' && data->map.c_count <= d * 3)
-		put_img(data, D_RIGHT, x, y);
-	else if (c == 'D' && data->map.c_count <= d * 4)
-		put_img(data, D_STILL, x, y);
-	if (data->map.c_count == d * 4)
+	if (c == 'D' && data->map.c_count <= data->d_nbr)
+		tmp = put_img(data, D_LEFT, x, y);
+	else if (c == 'D' && data->map.c_count <= data->d_nbr * 2)
+		tmp = put_img(data, D_STILL, x, y);
+	else if (c == 'D' && data->map.c_count <= data->d_nbr * 3)
+		tmp = put_img(data, D_RIGHT, x, y);
+	else if (c == 'D' && data->map.c_count <= data->d_nbr * 4)
+		tmp = put_img(data, D_STILL, x, y);
+	if (tmp == 0)
+		return (0);
+	if (data->map.c_count == data->d_nbr * 4)
 		data->map.c_count = 0;
 	data->map.c_count++;
 	return (1);
@@ -56,6 +57,7 @@ static int	animate_enemy(t_data *data)
 
 int	frame_rendering(t_data *data)
 {
+	
 	if (data->frames < ANIMATION)
 	{
 		data->frames++;

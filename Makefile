@@ -5,12 +5,12 @@ SRCS = so_long.c \
 		map.c \
 		map2.c \
 		image.c \
-		walls.c \
 		colors.c \
 		key_hook.c \
 		utils.c \
-		move.c \
-		anim_enemy.c
+		move_anim.c \
+		anim_enemy.c \
+		anim_player.c
 OBJ = ${SRCS:.c=.o}
 NAME = so_long
 RM = rm -f
@@ -65,7 +65,6 @@ clean :
 
 fclean :	clean
 		@${MAKE} fclean ${LIBFT_DIR}
-#		@${MAKE} fclean -C ${MLX_DIR}
 		${RM} ${NAME}
 		@echo "${_RED}### Removed ${NAME} ###${_NOC}"
 
