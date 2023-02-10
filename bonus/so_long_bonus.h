@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 13:59:06 by tgellon          ###   ########lyon.fr   */
+/*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
+/*   Updated: 2023/02/10 09:40:13 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG__BONUS_H
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
@@ -27,8 +28,7 @@
 # define D 100
 # define RED_CROSS 33
 
-# define ANIMATION 25000
-# define SLEEP 300000
+# define ANIMATION 18000
 
 # define WALL_L "./sprites/wall_x0.xpm"
 # define WALL_R "./sprites/wall_xmax.xpm"

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:47:38 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/04 12:58:02 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 08:47:16 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,16 @@ static void	path_check(t_data *data, int x, int y)
 int	map_parsing(t_data *data)
 {
 	data->map.map = ft_split(data->tmp, '\n');
+	if (!data->map.map)
+		return (free(data->tmp), 0);
 	data->mapcpy = ft_split(data->tmp, '\n');
-	free(data->tmp);
-	if (!data->map.map || !data->mapcpy)
+	if (!data->mapcpy)
+	{
+		free(data->tmp);
+		ft_free_map(data->map.map);
 		return (0);
+	}
+	free(data->tmp);
 	if (!y_wall_check(data))
 		return (0);
 	if (!x_wall_check(data))

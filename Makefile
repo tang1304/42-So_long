@@ -1,6 +1,7 @@
 # --- VARIABLES --- #
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
+BONUS_DIR = bonus/
 SRCS = so_long.c \
 		map.c \
 		map2.c \
@@ -11,10 +12,23 @@ SRCS = so_long.c \
 		move_anim.c \
 		anim_enemy.c \
 		anim_player.c
+SRCS_BONUS = so_long_bonus.c \
+			map.c \
+			map2.c \
+			image.c \
+			colors.c \
+			key_hook.c \
+			utils.c \
+			move_anim.c \
+			anim_enemy.c \
+			anim_player.c
 OBJ = ${SRCS:.c=.o}
+OBJ_BONUS = ${BONUS_DIR}${SRCS_BONUS:.c=.o}
 NAME = so_long
+NAME_BONUS = so_long_bonus
 RM = rm -f
-HEADERS = so_long.h
+HEADER = so_long.h
+HEADER_BONUS = ${BONUS_DIR}so_long_bonus.h
 LIBFT = libft/libft.a
 LIBFT_DIR = -C ./libft/
 
@@ -40,12 +54,19 @@ _GREEN	:=	\033[1;32m
 
 # --- RULES --- #
 
-%.o :	%.c ${HEADERS} ${LIBFT} ${MLX_A}
+%.o :	%.c ${HEADER} ${LIBFT} ${MLX_A}
+		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $<
+
+${BONUS_DIR}%.o :	${BONUS_DIR}%.c ${HEADER_BONUS} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $<
 
 ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} ${OBJ} ${LIBFT} ${MLX_A} ${MLX_FLAGS} -o ${NAME}
 		@echo "${_GREEN}### ${NAME} created ###${_NOC}\n"
+
+${NAME_BONUS} :	${OBJ_BONUS} ${LIBFT} ${MLX_A}
+		${CC} ${CFLAGS} ${OBJ_BONUS} ${LIBFT} ${MLX_A} ${MLX_FLAGS} -o ${NAME_BONUS}
+		@echo "${_GREEN}### ${NAME_BONUS} created ###${_NOC}\n"
 
 ${LIBFT}: FORCE
 		@${MAKE} ${LIBFT_DIR}
@@ -57,17 +78,19 @@ FORCE:
 
 all :	${NAME}
 
+bonus :	${NAME_BONUS}
+
 clean :
 		@${MAKE} clean ${LIBFT_DIR}
 		@${MAKE} clean -C ${MLX_DIR}
-		${RM} ${OBJ}
+		${RM} ${OBJ} ${OBJ_BONUS}
 		@echo "${_RED}### Removed So_long object files ###${_NOC}"
 
 fclean :	clean
 		@${MAKE} fclean ${LIBFT_DIR}
-		${RM} ${NAME}
-		@echo "${_RED}### Removed ${NAME} ###${_NOC}"
+		${RM} ${NAME} ${NAME_BONUS}
+		@echo "${_RED}### Removed ${NAME} and/or ${NAME_BONUS} ###${_NOC}"
 
 re : 	fclean all
 
-.PHONY : all clean fclean re FORCE
+.PHONY : all clean fclean re FORCE bonus

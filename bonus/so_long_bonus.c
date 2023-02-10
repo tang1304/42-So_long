@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 09:48:36 by tgellon          ###   ########lyon.fr   */
+/*   Created: 2023/02/10 09:38:03 by tgellon           #+#    #+#             */
+/*   Updated: 2023/02/10 09:38:16 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_close_win_error(t_data *data)
 
 int	ft_close(t_data *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	mlx_destroy_window(data->mlx, data->win);
 	ft_free_maps(data);
 	exit(EXIT_SUCCESS);
 }

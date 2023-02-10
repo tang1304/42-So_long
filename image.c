@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/09 08:54:56 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 08:25:54 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	choose_img(t_data *data, char c, int x, int y)
 		tmp = put_img(data, OBSTACLE, x, y);
 	else if (c == 'C')
 		tmp = put_img(data, COLLECTIBLE, x, y);
-	if (c == 'P')
+	else if (c == 'P')
 		tmp = put_img(data, P_FRONT_STILL, x, y);
 	else if (c == 'E')
 	{

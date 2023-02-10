@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:03:39 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/09 15:50:28 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 10:42:33 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static int	animate_enemy(t_data *data)
 
 int	frame_rendering(t_data *data)
 {
-	
 	if (data->frames < ANIMATION)
 	{
 		data->frames++;

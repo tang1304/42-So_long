@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:51:51 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/30 15:54:47 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 08:33:11 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,15 @@ void	ft_free_maps(t_data *data)
 {
 	ft_free_map(data->map.map);
 	ft_free_map(data->mapcpy);
+}
+
+void	data_init(t_data *data)
+{
+	data->map.c = 0;
+	data->map.e = 0;
+	data->map.p = 0;
+	data->moves = 0;
+	data->frames = 0;
+	data->map.c_count = 0;
+	data->d_nbr = 0;
 }
