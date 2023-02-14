@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:38:03 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 15:49:20 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 15:23:03 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_close_win_error(t_data *data)
 
 int	ft_close(t_data *data)
 {
+	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	mlx_destroy_window(data->mlx, data->win);
 	ft_free_maps(data);
 	exit(EXIT_SUCCESS);
 }
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	if (!map_init(&data, argc, argv))
 		ft_close_map_error(&data);
 	data.win = mlx_new_window(data.mlx, (data.map.width * 64),
-			(data.map.height * 64), "So_long");
+			(data.map.height * 64), "So_long_bonus");
 	if (!data.win)
 		ft_close_win_error(&data);
 	if (!put_map(&data))

@@ -6,14 +6,35 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 08:46:39 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 16:57:50 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Gets the coordinates of the P*/
+void	get_p_position(t_data *data)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (data->map.map[++j])
+	{
+		i = -1;
+		while (data->map.map[j][++i])
+		{
+			if (data->map.map[j][i] == 'P')
+			{
+				data->map.p_x = i;
+				data->map.p_y = j;
+			}
+		}
+	}
+}
+
 /*Puts all the lines of the .ber file in a string*/
-static int	get_map(t_data *data, int fd)//TODO: verif des free
+static int	get_map(t_data *data, int fd)
 {
 	char	*temp;
 
@@ -47,9 +68,9 @@ static int	map_char_check(t_data *data)
 	{
 		if (data->tmp[i] != '0' && data->tmp[i] != '1' && data->tmp[i] != 'C'
 			&& data->tmp[i] != 'E' && data->tmp[i] != 'P'
-			&& data->tmp[i] != 'D' && data->tmp[i] != '\n')
+			&& data->tmp[i] != '\n')
 		{
-			ft_printf("Error\nOnly '0', '1', 'P', 'C', 'E', 'D' authorized\n");
+			ft_printf("Error\nOnly '0', '1', 'P', 'C', 'E' authorized\n");
 			return (0);
 		}
 		if (data->tmp[i] == 'C')
@@ -96,7 +117,7 @@ int	map_init(t_data *data, int argc, char **argv)
 	if (!get_map(data, fd))
 	{
 		ft_printf("Error\nGet_map crashed\n");
-		exit(EXIT_FAILURE);
+		return (0);
 	}
 	close(fd);
 	if (!map_char_check(data))

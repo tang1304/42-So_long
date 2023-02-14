@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:55:34 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 14:53:30 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int	move(t_data *data, int y, int x, int keycode)
 	if (!direction(data, keycode))
 		return (0);
 	if (!move_2(data, y, x))
+		return (2);
+	if (!anim_player(data, keycode, x, y))
 		return (0);
-	anim_player(data, keycode, x, y);
 	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C'
 				&& data->c_nbr >= 1)
 	{
@@ -82,7 +83,10 @@ int	move(t_data *data, int y, int x, int keycode)
 		data->map.map[data->map.p_y + y][data->map.p_x + x] = '0';
 	}
 	if (data->c_nbr == 0)
-		put_img(data, EXIT_ON, data->map.e_x, data->map.e_y);
+	{
+		if (!put_img(data, EXIT_ON, data->map.e_x, data->map.e_y))
+			return (0);
+	}
 	data->map.p_x += x;
 	data->map.p_y += y;
 	data->moves++;

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:54:12 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:25:22 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 15:23:26 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	main(int argc, char **argv)
 		ft_close(&data);
 	mlx_key_hook(data.win, keyhook, &data);
 	mlx_hook(data.win, 17, 0, ft_close, &data);
-	mlx_string_put(data.mlx, data.win, 20, 20, 0x00E11B, "Moves : 0");
-	mlx_loop_hook(data.mlx, frame_rendering, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

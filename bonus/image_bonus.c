@@ -6,14 +6,14 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 08:31:14 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 14:06:17 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
 /* converts the xpm sprite to image and puts it on the window */
-int	put_img(t_data *data, char *path, int x, int y)//TODO: fonction d'ouverture d'images, a stocker en struct de void*
+int	put_img(t_data *data, char *path, int x, int y)
 {
 	int	pxl;
 
@@ -25,7 +25,7 @@ int	put_img(t_data *data, char *path, int x, int y)//TODO: fonction d'ouverture 
 	if (!data->img.img)
 	{
 		ft_printf("Error\nProblem loading xpm file\n");
-		return (0);//TODO: check retour;
+		return (0);
 	}	
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, x, y);
 	mlx_destroy_image(data->mlx, data->img.img);

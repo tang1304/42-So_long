@@ -6,10 +6,9 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 17:01:14 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 17:05:33 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG__BONUS_H
@@ -27,7 +26,7 @@
 # define D 100
 # define RED_CROSS 33
 
-# define ANIMATION 18000
+# define ANIMATION 25000
 # define SLEEP 300000
 
 # define WALL_L "./sprites/wall_x0.xpm"
@@ -110,7 +109,7 @@ int		ft_close(t_data *data);
 
 /*	map_bonus.c	*/
 int		map_init(t_data *data, int argc, char **argv);
-void	ft_free(t_data *data);
+void	get_p_position(t_data *data);
 
 /*	map2_bonus.c	*/
 int		map_parsing(t_data *data);
@@ -122,13 +121,6 @@ int		put_img(t_data *data, char *path, int x, int y);
 int		put_map(t_data *data);
 int		put_background(t_data *data);
 int		choose_img(t_data *data, char c, int x, int y);
-
-/*	colors_bonus.c	*/
-int		create_trgb(int t, int r, int g, int b);
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
 
 /*	key_hook_bonus.c	*/
 int		keyhook(int keycode, t_data *data);

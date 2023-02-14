@@ -3,20 +3,16 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 BONUS_DIR = ./bonus/
 SRCS = so_long.c \
+		image.c \
+		key_hook.c \
 		map.c \
 		map2.c \
-		image.c \
-		colors.c \
-		key_hook.c \
-		utils.c \
-		move_anim.c \
-		anim_enemy.c \
-		anim_player.c
+		move.c \
+		utils.c
 SRCS_BONUS = so_long_bonus.c \
 			map_bonus.c \
 			map2_bonus.c \
 			image_bonus.c \
-			colors_bonus.c \
 			key_hook_bonus.c \
 			utils_bonus.c \
 			move_anim_bonus.c \
@@ -31,7 +27,7 @@ RM = rm -f
 HEADER = so_long.h
 HEADER_BONUS = ${BONUS_DIR}so_long_bonus.h
 LIBFT = libft/libft.a
-LIBFT_DIR = -C ./libft/
+LIBFT_DIR = libft/
 
 # --- OS SELECTION --- #
 
@@ -39,7 +35,7 @@ UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
 		MLX_A	=	${MLX_DIR}libmlx.a
 		MLX_DIR	=	mlx/mlx_linux/
-		MLX_FLAGS = -lm -L/usr/lib -lXext -lX11 # -lz
+		MLX_FLAGS = -lm -L/usr/lib -lXext -lX11
 	endif
 	ifeq ($(UNAME_S),Darwin)
 		MLX_A	=	${MLX_DIR}libmlx.a
@@ -72,10 +68,10 @@ ${OBJ_BONUS}: ${OBJ_DIR}%.o :	${BONUS_DIR}%.c ${HEADER_BONUS} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $< -o $@
 
 ${LIBFT}: FORCE
-		@${MAKE} ${LIBFT_DIR}
+		${MAKE} -sC ${LIBFT_DIR}
 
 ${MLX_A}: FORCE
-		@${MAKE} -C ${MLX_DIR}
+		@${MAKE} -sC ${MLX_DIR}
 
 FORCE:
 
@@ -84,14 +80,13 @@ all :	${NAME}
 bonus :	${NAME_BONUS}
 
 clean :
-		@${MAKE} clean ${LIBFT_DIR}
-		@${MAKE} clean -C ${MLX_DIR}
+		@${MAKE} clean -sC ${LIBFT_DIR}
+		@${MAKE} clean -sC ${MLX_DIR}
 		rm -rf objs/
-		${RM} ${OBJ} ${OBJ_BONUS}
 		@echo "${_RED}### Removed So_long object files ###${_NOC}"
 
 fclean :	clean
-		@${MAKE} fclean ${LIBFT_DIR}
+		@${MAKE} fclean -sC ${LIBFT_DIR}
 		${RM} ${NAME} ${NAME_BONUS}
 		@echo "${_RED}### Removed ${NAME} and/or ${NAME_BONUS} ###${_NOC}"
 

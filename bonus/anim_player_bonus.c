@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:28:46 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:57:19 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 14:47:47 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,17 @@ static int	anim_player_d(t_data *data, int x, int y)
 
 int	anim_player(t_data *data, int keycode, int x, int y)
 {
+	int	tmp;
+
 	if (keycode == A)
-		anim_player_l(data, x, y);
-	if (keycode == D)
-		anim_player_r(data, x, y);
-	if (keycode == W)
-		anim_player_u(data, x, y);
-	if (keycode == S)
-		anim_player_d(data, x, y);
+		tmp = anim_player_l(data, x, y);
+	else if (keycode == D)
+		tmp = anim_player_r(data, x, y);
+	else if (keycode == W)
+		tmp = anim_player_u(data, x, y);
+	else if (keycode == S)
+		tmp = anim_player_d(data, x, y);
+	if (tmp == 0)
+		return (0);
 	return (1);
 }

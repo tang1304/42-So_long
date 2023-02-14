@@ -6,11 +6,13 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:47:38 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:56:11 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 17:14:35 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+static void	path_check(t_data *data, int x, int y);
 
 /*checks there are only '1' on the first and last column */
 int	x_wall_check(t_data *data)
@@ -70,25 +72,20 @@ int	y_wall_check(t_data *data)
 	return (1);
 }
 
-/*Gets the coordinates of the P*/
-static void	get_p_position(t_data *data)
+static void	path_check_2(t_data *data, int x, int y)
 {
-	int	i;
-	int	j;
-
-	j = -1;
-	while (data->map.map[++j])
-	{
-		i = -1;
-		while (data->map.map[j][++i])
-		{
-			if (data->map.map[j][i] == 'P')
-			{
-				data->map.p_x = i;
-				data->map.p_y = j;
-			}
-		}
-	}
+	if (data->mapcpy[y][x - 1] == '0' || data->mapcpy[y][x - 1] == 'C'
+		|| data->mapcpy[y][x - 1] == 'E')
+		path_check(data, x - 1, y);
+	if (data->mapcpy[y][x + 1] == '0' || data->mapcpy[y][x + 1] == 'C'
+		|| data->mapcpy[y][x + 1] == 'E')
+		path_check(data, x + 1, y);
+	if (data->mapcpy[y - 1][x] == '0' || data->mapcpy[y - 1][x] == 'C'
+		|| data->mapcpy[y - 1][x] == 'E')
+		path_check(data, x, y - 1);
+	if (data->mapcpy[y + 1][x] == '0' || data->mapcpy[y + 1][x] == 'C'
+		|| data->mapcpy[y + 1][x] == 'E')
+		path_check(data, x, y + 1);
 }
 
 /*check if the path of the player is valid*/
@@ -99,21 +96,20 @@ static void	path_check(t_data *data, int x, int y)
 		data->mapcpy[y][x] = 'X';
 		data->map.p -= 1;
 	}
-	if (data->mapcpy[y][x] == 'C')
+	else if (data->mapcpy[y][x] == 'C')
 	{
 		data->mapcpy[y][x] = 'X';
 		data->map.c -= 1;
 	}
-	if (data->mapcpy[y][x] == '0')
+	else if (data->mapcpy[y][x] == 'E')
+	{
 		data->mapcpy[y][x] = 'X';
-	if (data->mapcpy[y][x - 1] == '0' || data->mapcpy[y][x - 1] == 'C')
-		path_check(data, x - 1, y);
-	if (data->mapcpy[y][x + 1] == '0' || data->mapcpy[y][x + 1] == 'C')
-		path_check(data, x + 1, y);
-	if (data->mapcpy[y - 1][x] == '0' || data->mapcpy[y - 1][x] == 'C')
-		path_check(data, x, y - 1);
-	if (data->mapcpy[y + 1][x] == '0' || data->mapcpy[y + 1][x] == 'C')
-		path_check(data, x, y + 1);
+		data->map.e -= 1;
+		return ;
+	}
+	else if (data->mapcpy[y][x] == '0')
+		data->mapcpy[y][x] = 'X';
+	path_check_2(data, x, y);
 }
 
 /*Puts the string on a **char, and does the checks above */
@@ -137,7 +133,7 @@ int	map_parsing(t_data *data)
 	get_p_position(data);
 	data->c_nbr = data->map.c;
 	path_check(data, data->map.p_x, data->map.p_y);
-	if (data->map.c != 0 || data->map.p != 0)
+	if (data->map.c != 0 || data->map.p != 0 || data->map.e != 0)
 	{
 		ft_printf("Error\nPath not valid\n");
 		ft_free_maps(data);

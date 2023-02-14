@@ -6,14 +6,35 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:56:26 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 17:05:03 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+/*Gets the coordinates of the P*/
+void	get_p_position(t_data *data)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (data->map.map[++j])
+	{
+		i = -1;
+		while (data->map.map[j][++i])
+		{
+			if (data->map.map[j][i] == 'P')
+			{
+				data->map.p_x = i;
+				data->map.p_y = j;
+			}
+		}
+	}
+}
+
 /*Puts all the lines of the .ber file in a string*/
-static int	get_map(t_data *data, int fd)//TODO: verif des free
+static int	get_map(t_data *data, int fd)
 {
 	char	*temp;
 
@@ -96,7 +117,7 @@ int	map_init(t_data *data, int argc, char **argv)
 	if (!get_map(data, fd))
 	{
 		ft_printf("Error\nGet_map crashed\n");
-		exit(EXIT_FAILURE);
+		return (0);
 	}
 	close(fd);
 	if (!map_char_check(data))

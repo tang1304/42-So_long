@@ -39,7 +39,7 @@ SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
 	mlx_destroy_display.c
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
-CFLAGS	= -O3 -I$(INC) -Wno-deprecated-declarations
+CFLAGS	= -O3 -I$(INC)
 
 # --- RULES --- #
 

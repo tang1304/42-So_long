@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:03:39 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 16:57:35 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 14:47:12 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	frame_rendering(t_data *data)
 	}
 	else
 		data->frames = 0;
-	animate_enemy(data);
+	if (!animate_enemy(data))
+		ft_close(data);
 	return (1);
 }

@@ -6,14 +6,14 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 08:31:25 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/14 12:22:38 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /* converts the xpm sprite to image and puts it on the window */
-int	put_img(t_data *data, char *path, int x, int y)//TODO: fonction d'ouverture d'images, a stocker en struct de void*
+int	put_img(t_data *data, char *path, int x, int y)
 {
 	int	pxl;
 
@@ -25,7 +25,7 @@ int	put_img(t_data *data, char *path, int x, int y)//TODO: fonction d'ouverture 
 	if (!data->img.img)
 	{
 		ft_printf("Error\nProblem loading xpm file\n");
-		return (0);//TODO: check retour;
+		return (0);
 	}	
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, x, y);
 	mlx_destroy_image(data->mlx, data->img.img);
@@ -97,11 +97,6 @@ int	choose_img(t_data *data, char c, int x, int y)
 		tmp = put_img(data, EXIT_OFF, x, y);
 		data->map.e_x = x;
 		data->map.e_y = y;
-	}
-	else if (c == 'D')
-	{
-		tmp = put_img(data, D_STILL, x, y);
-		data->d_nbr++;
 	}
 	if (tmp == 0)
 		return (0);
