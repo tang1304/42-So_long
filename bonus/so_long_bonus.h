@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 09:40:13 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 17:01:14 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>//TODO: a suppr
-# include "libft/libft.h"
-# include "mlx/mlx_linux/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx_linux/mlx.h"
 
 # define ESC 65307
 # define W 119
@@ -29,6 +28,7 @@
 # define RED_CROSS 33
 
 # define ANIMATION 18000
+# define SLEEP 300000
 
 # define WALL_L "./sprites/wall_x0.xpm"
 # define WALL_R "./sprites/wall_xmax.xpm"
@@ -68,7 +68,6 @@
 
 typedef struct s_img
 {
-	void	*collect;
 	void	*img;
 	int		height;
 	int		width;
@@ -106,44 +105,44 @@ typedef struct s_data
 	t_map	map;
 }	t_data;
 
-/*	so_long.c	*/
+/*	so_long_bonus.c	*/
 int		ft_close(t_data *data);
 
-/*	map.c	*/
+/*	map_bonus.c	*/
 int		map_init(t_data *data, int argc, char **argv);
 void	ft_free(t_data *data);
 
-/*	map2.c	*/
+/*	map2_bonus.c	*/
 int		map_parsing(t_data *data);
 int		x_wall_check(t_data *data);
 int		y_wall_check(t_data *data);
 
-/*	image.c	*/
+/*	image_bonus.c	*/
 int		put_img(t_data *data, char *path, int x, int y);
 int		put_map(t_data *data);
 int		put_background(t_data *data);
 int		choose_img(t_data *data, char c, int x, int y);
 
-/*	colors.c	*/
+/*	colors_bonus.c	*/
 int		create_trgb(int t, int r, int g, int b);
 int		get_t(int trgb);
 int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 
-/*	key_hook.c	*/
+/*	key_hook_bonus.c	*/
 int		keyhook(int keycode, t_data *data);
 
-/*	move.c	*/
+/*	move_bonus.c	*/
 int		move(t_data *data, int y, int x, int keycode);
 
-/*	anim_enemy.c	*/
+/*	anim_enemy_bonus.c	*/
 int		frame_rendering(t_data *data);
 
-/*	anim_player.c	*/
+/*	anim_player_bonus.c	*/
 int		anim_player(t_data *data, int keycode, int x, int y);
 
-/*	utils.c	*/
+/*	utils_bonus.c	*/
 char	*ft_strjoin_sl(char *s1, char *s2);
 void	ft_free_map(char **str);
 void	ft_free_maps(t_data *data);

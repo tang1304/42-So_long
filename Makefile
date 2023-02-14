@@ -1,7 +1,7 @@
 # --- VARIABLES --- #
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-BONUS_DIR = bonus/
+BONUS_DIR = ./bonus/
 SRCS = so_long.c \
 		map.c \
 		map2.c \
@@ -13,17 +13,18 @@ SRCS = so_long.c \
 		anim_enemy.c \
 		anim_player.c
 SRCS_BONUS = so_long_bonus.c \
-			map.c \
-			map2.c \
-			image.c \
-			colors.c \
-			key_hook.c \
-			utils.c \
-			move_anim.c \
-			anim_enemy.c \
-			anim_player.c
-OBJ = ${SRCS:.c=.o}
-OBJ_BONUS = ${BONUS_DIR}${SRCS_BONUS:.c=.o}
+			map_bonus.c \
+			map2_bonus.c \
+			image_bonus.c \
+			colors_bonus.c \
+			key_hook_bonus.c \
+			utils_bonus.c \
+			move_anim_bonus.c \
+			anim_enemy_bonus.c \
+			anim_player_bonus.c
+OBJ_DIR = objs/
+OBJ = ${SRCS:%.c=${OBJ_DIR}%.o}
+OBJ_BONUS = ${SRCS_BONUS:%.c=${OBJ_DIR}%.o}
 NAME = so_long
 NAME_BONUS = so_long_bonus
 RM = rm -f
@@ -54,12 +55,6 @@ _GREEN	:=	\033[1;32m
 
 # --- RULES --- #
 
-%.o :	%.c ${HEADER} ${LIBFT} ${MLX_A}
-		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $<
-
-${BONUS_DIR}%.o :	${BONUS_DIR}%.c ${HEADER_BONUS} ${LIBFT} ${MLX_A}
-		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $<
-
 ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} ${OBJ} ${LIBFT} ${MLX_A} ${MLX_FLAGS} -o ${NAME}
 		@echo "${_GREEN}### ${NAME} created ###${_NOC}\n"
@@ -67,6 +62,14 @@ ${NAME} :	${OBJ} ${LIBFT} ${MLX_A}
 ${NAME_BONUS} :	${OBJ_BONUS} ${LIBFT} ${MLX_A}
 		${CC} ${CFLAGS} ${OBJ_BONUS} ${LIBFT} ${MLX_A} ${MLX_FLAGS} -o ${NAME_BONUS}
 		@echo "${_GREEN}### ${NAME_BONUS} created ###${_NOC}\n"
+
+${OBJ}: ${OBJ_DIR}%.o :	%.c ${HEADER} ${LIBFT} ${MLX_A}
+		@mkdir -p objs
+		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $< -o $@
+
+${OBJ_BONUS}: ${OBJ_DIR}%.o :	${BONUS_DIR}%.c ${HEADER_BONUS} ${LIBFT} ${MLX_A}
+		@mkdir -p objs
+		${CC} ${CFLAGS} -I/usr/include -I${MLX_DIR} -c $< -o $@
 
 ${LIBFT}: FORCE
 		@${MAKE} ${LIBFT_DIR}
@@ -83,6 +86,7 @@ bonus :	${NAME_BONUS}
 clean :
 		@${MAKE} clean ${LIBFT_DIR}
 		@${MAKE} clean -C ${MLX_DIR}
+		rm -rf objs/
 		${RM} ${OBJ} ${OBJ_BONUS}
 		@echo "${_RED}### Removed So_long object files ###${_NOC}"
 

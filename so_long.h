@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 13:59:06 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 16:29:29 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@
 
 typedef struct s_img
 {
-	void	*collect;
 	void	*img;
 	int		height;
 	int		width;

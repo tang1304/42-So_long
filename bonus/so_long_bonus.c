@@ -6,11 +6,11 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:38:03 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/10 09:38:16 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/10 15:49:20 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_close_map_error(t_data *data)
 {
