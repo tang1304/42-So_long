@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:15:24 by tgellon           #+#    #+#             */
-/*   Updated: 2023/01/31 09:46:41 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 15:32:50 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!stock)
-		stock = ft_calloc(1, 1);
+		stock = ft_calloc(1, 4);
 	stock = ft_read(fd, stock);
 	if (!stock)
 	{

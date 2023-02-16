@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 17:05:33 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 16:44:06 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,6 @@ char	*ft_strjoin_sl(char *s1, char *s2);
 void	ft_free_map(char **str);
 void	ft_free_maps(t_data *data);
 void	data_init(t_data *data);
+int		map_empty_line_check(t_data *data);
 
 #endif

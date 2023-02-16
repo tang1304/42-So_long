@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 17:05:03 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 16:41:26 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int	get_map(t_data *data, int fd)
 {
 	char	*temp;
 
-	data->map.height = 0;
 	temp = get_next_line(fd);
 	if (!temp)
 		return (0);
@@ -117,11 +116,13 @@ int	map_init(t_data *data, int argc, char **argv)
 	if (!get_map(data, fd))
 	{
 		ft_printf("Error\nGet_map crashed\n");
-		return (0);
+		return (close(fd), 0);
 	}
 	close(fd);
 	if (!map_char_check(data))
 		return (free(data->tmp), 0);
+	if (!map_empty_line_check(data))
+		return (0);
 	if (!map_parsing(data))
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:51:51 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 12:27:29 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 16:01:55 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,28 @@ void	ft_free_maps(t_data *data)
 
 void	data_init(t_data *data)
 {
+	data->map.height = 0;
 	data->map.c = 0;
 	data->map.e = 0;
 	data->map.p = 0;
 	data->moves = 0;
 	data->map.c_count = 0;
+}
+
+int	map_empty_line_check(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (data->tmp[++i])
+	{
+		if ((data->tmp[i] == '\n' && data->tmp[i + 1] == '\n')
+			|| data->tmp[0] == '\n')
+		{
+			free(data->tmp);
+			ft_printf("Error\nEmpty line on the map\n");
+			return (0);
+		}
+	}
+	return (1);
 }

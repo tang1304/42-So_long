@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:50:45 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 17:32:51 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/15 13:02:09 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define HEX_BASE_UPPER "0123456789ABCDEF"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 2
 # endif
 
 typedef struct s_list
