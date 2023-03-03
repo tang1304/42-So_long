@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:16:52 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/15 16:00:20 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 14:27:02 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@
 # define P_RIGHT_STILL "./sprites/player_right_still.xpm"
 # define EXIT_OFF "./sprites/exit_off.xpm"
 # define EXIT_ON "./sprites/exit_on.xpm"
-
-# define HEX_BASE_LOWER "0123456789abcdef"
-# define HEX_BASE_UPPER "0123456789ABCDEF"
 
 typedef struct s_img
 {
@@ -94,6 +91,9 @@ void	get_p_position(t_data *data);
 int		map_parsing(t_data *data);
 int		x_wall_check(t_data *data);
 int		y_wall_check(t_data *data);
+
+/*	path_check.c	*/
+void	path_check(t_data *data, int x, int y);
 
 /*	image.c	*/
 int		put_img(t_data *data, char *path, int x, int y);

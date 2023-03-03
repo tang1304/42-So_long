@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 15:27:01 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 16:02:30 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	direction(t_data *data, int keycode)
 {
 	int	tmp;
 
+	tmp = 1;
 	if (keycode == W)
 		tmp = put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y);
 	else if (keycode == S)
@@ -34,13 +35,13 @@ static int	move_2(t_data *data, int y, int x)
 {
 	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == '1')
 		return (0);
-	else if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C'
+	else if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C' \
 				&& data->c_nbr >= 1)
 	{
 		data->c_nbr--;
 		data->map.map[data->map.p_y + y][data->map.p_x + x] = '0';
 	}
-	else if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'E'
+	else if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'E' \
 				&& data->c_nbr > 0)
 		return (ft_printf("Get all the beers first !\n"), 0);
 	return (1);

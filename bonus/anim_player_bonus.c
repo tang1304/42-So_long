@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:28:46 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 14:47:47 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 15:31:30 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int	anim_player(t_data *data, int keycode, int x, int y)
 {
 	int	tmp;
 
+	tmp = 1;
 	if (keycode == A)
 		tmp = anim_player_l(data, x, y);
 	else if (keycode == D)

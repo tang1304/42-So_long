@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/15 16:41:26 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 16:04:59 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ void	get_p_position(t_data *data)
 static int	get_map(t_data *data, int fd)
 {
 	char	*temp;
+	int		i;
 
+	i = 0;
 	temp = get_next_line(fd);
 	if (!temp)
 		return (0);
 	data->tmp = ft_strdup(temp);
 	if (!data->tmp)
 		return (free(temp), 0);
-	free(temp);
-	while (temp != NULL)
+	while (temp[i])
 	{
-		temp = get_next_line(fd);
-		data->map.height++;
-		data->tmp = ft_strjoin_sl(data->tmp, temp);
-		if (!data->tmp)
-			return (free(temp), 0);
-		free(temp);
+		if (temp[i] == '\n')
+			data->map.height++;
+		i++;
 	}
+	free(temp);
+	data->map.height++;
 	return (1);
 }
 
@@ -65,8 +65,8 @@ static int	map_char_check(t_data *data)
 	i = -1;
 	while (data->tmp[++i])
 	{
-		if (data->tmp[i] != '0' && data->tmp[i] != '1' && data->tmp[i] != 'C'
-			&& data->tmp[i] != 'E' && data->tmp[i] != 'P'
+		if (data->tmp[i] != '0' && data->tmp[i] != '1' && data->tmp[i] != 'C' \
+			&& data->tmp[i] != 'E' && data->tmp[i] != 'P' \
 			&& data->tmp[i] != 'D' && data->tmp[i] != '\n')
 		{
 			ft_printf("Error\nOnly '0', '1', 'P', 'C', 'E', 'D' authorized\n");
@@ -93,8 +93,8 @@ static int	map_format(char *argv)
 	int	i;
 
 	i = ft_strlen(argv);
-	if (argv[i - 1] == 'r' && argv[i - 2] == 'e' && argv[i - 3] == 'b'
-		&& argv[i - 4] == '.')
+	if ((argv[i - 1] == 'r' && argv[i - 2] == 'e' && argv[i - 3] == 'b' \
+			&& argv[i - 4] == '.') && argv[i - 5] != '/')
 		return (1);
 	ft_printf("Error\nWrong map file format\n");
 	return (0);

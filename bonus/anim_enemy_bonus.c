@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:03:39 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 14:47:12 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 15:31:05 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	change_anim_enemy(t_data *data, char c, int x, int y)
 {
 	int	tmp;
 
+	tmp = 1;
 	if (c == 'D' && data->map.c_count <= data->d_nbr)
 		tmp = put_img(data, D_LEFT, x, y);
 	else if (c == 'D' && data->map.c_count <= data->d_nbr * 2)

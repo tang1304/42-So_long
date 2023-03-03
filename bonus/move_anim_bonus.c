@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 14:53:30 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 16:05:30 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	move(t_data *data, int y, int x, int keycode)
 		return (2);
 	if (!anim_player(data, keycode, x, y))
 		return (0);
-	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C'
+	if (data->map.map[data->map.p_y + y][data->map.p_x + x] == 'C' \
 				&& data->c_nbr >= 1)
 	{
 		data->c_nbr--;

@@ -7,11 +7,13 @@ SRCS = so_long.c \
 		key_hook.c \
 		map.c \
 		map2.c \
+		path_check.c \
 		move.c \
 		utils.c
 SRCS_BONUS = so_long_bonus.c \
 			map_bonus.c \
 			map2_bonus.c \
+			path_check_bonus.c \
 			image_bonus.c \
 			key_hook_bonus.c \
 			utils_bonus.c \

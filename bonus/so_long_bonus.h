@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/15 16:44:06 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 14:27:15 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define RED_CROSS 33
 
 # define ANIMATION 25000
-# define SLEEP 300000
+# define SLEEP 200000
 
 # define WALL_L "./sprites/wall_x0.xpm"
 # define WALL_R "./sprites/wall_xmax.xpm"
@@ -61,9 +61,6 @@
 # define D_STILL "./sprites/ennemy_still.xpm"
 # define D_LEFT "./sprites/ennemy_left.xpm"
 # define D_RIGHT "./sprites/ennemy_right.xpm"
-
-# define HEX_BASE_LOWER "0123456789abcdef"
-# define HEX_BASE_UPPER "0123456789ABCDEF"
 
 typedef struct s_img
 {
@@ -115,6 +112,9 @@ void	get_p_position(t_data *data);
 int		map_parsing(t_data *data);
 int		x_wall_check(t_data *data);
 int		y_wall_check(t_data *data);
+
+/*	path_check_bonus.c	*/
+void	path_check(t_data *data, int x, int y);
 
 /*	image_bonus.c	*/
 int		put_img(t_data *data, char *path, int x, int y);

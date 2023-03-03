@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 12:22:38 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 16:01:25 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	put_img(t_data *data, char *path, int x, int y)
 	pxl = 64;
 	x *= pxl;
 	y *= pxl;
-	data->img.img = mlx_xpm_file_to_image(data->mlx, path, &data->img.width,
+	data->img.img = mlx_xpm_file_to_image(data->mlx, path, &data->img.width, \
 			&data->img.height);
 	if (!data->img.img)
 	{
@@ -57,6 +57,7 @@ int	put_walls(t_data *data, int x, int y)
 {
 	int	tmp;
 
+	tmp = 1;
 	if (x == 0 && y == 0)
 		tmp = put_img(data, WALL_UL, x, y);
 	else if (x == data->map.width - 1 && y == 0)
@@ -83,7 +84,8 @@ int	choose_img(t_data *data, char c, int x, int y)
 {
 	int	tmp;
 
-	if (c == '1' && (x == 0 || x == data->map.width - 1 || y == 0
+	tmp = 1;
+	if (c == '1' && (x == 0 || x == data->map.width - 1 || y == 0 \
 			|| y == data->map.height - 1))
 		tmp = put_walls(data, x, y);
 	else if (c == '1')

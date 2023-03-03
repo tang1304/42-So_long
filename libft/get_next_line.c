@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:15:24 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/15 15:32:50 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 15:20:50 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static char	*ft_read(int fd, char *stock)
 		if (!stock)
 			return (free(str), NULL);
 		free(temp);
-		if (ft_strchr_gnl(stock, '\n'))
-			break ;
 	}
 	return (free(str), stock);
 }
@@ -78,7 +76,7 @@ static char	*ft_get_str(char *stock)
 	j = 0;
 	if (!stock[i])
 		return (NULL);
-	while (stock[i] != '\n' && stock[i])
+	while (stock[i] != '\0')
 		i++;
 	if (stock[i] == '\n')
 		i++;
@@ -101,7 +99,7 @@ static char	*ft_clear(char *stock)
 	char	*new_stock;
 
 	i = 0;
-	while (stock[i] != '\n' && stock[i])
+	while (stock[i] != '\0' && stock[i])
 		i++;
 	if (!stock[i])
 	{
@@ -131,7 +129,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!stock)
-		stock = ft_calloc(1, 4);
+		stock = ft_calloc(1, 1);
 	stock = ft_read(fd, stock);
 	if (!stock)
 	{
@@ -139,6 +137,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = ft_get_str(stock);
+	if (!line)
+		return (NULL);
 	stock = ft_clear(stock);
 	return (line);
 }

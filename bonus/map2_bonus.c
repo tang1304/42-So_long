@@ -6,13 +6,11 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:47:38 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/15 16:42:41 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/02/20 15:29:24 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-static void	path_check(t_data *data, int x, int y);
 
 /*checks there are only '1' on the first and last column */
 int	x_wall_check(t_data *data)
@@ -70,46 +68,6 @@ int	y_wall_check(t_data *data)
 		i++;
 	}
 	return (1);
-}
-
-static void	path_check_2(t_data *data, int x, int y)
-{
-	if (data->mapcpy[y][x - 1] == '0' || data->mapcpy[y][x - 1] == 'C'
-		|| data->mapcpy[y][x - 1] == 'E')
-		path_check(data, x - 1, y);
-	if (data->mapcpy[y][x + 1] == '0' || data->mapcpy[y][x + 1] == 'C'
-		|| data->mapcpy[y][x + 1] == 'E')
-		path_check(data, x + 1, y);
-	if (data->mapcpy[y - 1][x] == '0' || data->mapcpy[y - 1][x] == 'C'
-		|| data->mapcpy[y - 1][x] == 'E')
-		path_check(data, x, y - 1);
-	if (data->mapcpy[y + 1][x] == '0' || data->mapcpy[y + 1][x] == 'C'
-		|| data->mapcpy[y + 1][x] == 'E')
-		path_check(data, x, y + 1);
-}
-
-/*check if the path of the player is valid*/
-static void	path_check(t_data *data, int x, int y)
-{
-	if (data->mapcpy[y][x] == 'P')
-	{
-		data->mapcpy[y][x] = 'X';
-		data->map.p -= 1;
-	}
-	else if (data->mapcpy[y][x] == 'C')
-	{
-		data->mapcpy[y][x] = 'X';
-		data->map.c -= 1;
-	}
-	else if (data->mapcpy[y][x] == 'E')
-	{
-		data->mapcpy[y][x] = 'X';
-		data->map.e -= 1;
-		return ;
-	}
-	else if (data->mapcpy[y][x] == '0')
-		data->mapcpy[y][x] = 'X';
-	path_check_2(data, x, y);
 }
 
 /*Puts the string on a **char, and does the checks above */
