@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:50:45 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/03 15:20:55 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 09:00:04 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int				ft_printnbr_base(unsigned int nbr, char *base);
 unsigned int	ft_printnbr_p(unsigned long n, char *base);
 
 /*	get_next_line	*/
+char			*get_all_lines(int fd);
 char			*get_next_line(int fd);
 int				ft_strchr_gnl(const char *s, int c);
 

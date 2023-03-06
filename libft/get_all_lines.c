@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_all_lines.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:15:24 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/06 08:58:09 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 08:53:08 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strjoin_gnl(const char *s1, const char *s2)
+static char	*ft_strjoin_gal(const char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -58,12 +58,10 @@ static char	*ft_read(int fd, char *stock)
 			return (free(stock), free(str), NULL);
 		str[i] = '\0';
 		temp = stock;
-		stock = ft_strjoin_gnl(temp, str);
+		stock = ft_strjoin_gal(temp, str);
 		if (!stock)
 			return (free(str), NULL);
 		free(temp);
-		if (ft_strchr_gnl(stock, '\n'))
-			break ;
 	}
 	return (free(str), stock);
 }
@@ -78,7 +76,7 @@ static char	*ft_get_str(char *stock)
 	j = 0;
 	if (!stock[i])
 		return (NULL);
-	while (stock[i] != '\0' && stock[i])
+	while (stock[i] != '\0')
 		i++;
 	if (stock[i] == '\n')
 		i++;
@@ -101,7 +99,7 @@ static char	*ft_clear(char *stock)
 	char	*new_stock;
 
 	i = 0;
-	while (stock[i] != '\n' && stock[i])
+	while (stock[i] != '\0' && stock[i])
 		i++;
 	if (!stock[i])
 	{
@@ -123,7 +121,7 @@ static char	*ft_clear(char *stock)
 	return (new_stock);
 }
 
-char	*get_next_line(int fd)
+char	*get_all_lines(int fd)
 {
 	static char	*stock;
 	char		*line;

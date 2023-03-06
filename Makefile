@@ -15,6 +15,7 @@ SRCS_BONUS = so_long_bonus.c \
 			map2_bonus.c \
 			path_check_bonus.c \
 			image_bonus.c \
+			image2_bonus.c \
 			key_hook_bonus.c \
 			utils_bonus.c \
 			move_anim_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/03 16:02:02 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 09:02:56 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	get_map(t_data *data, int fd)
 	int		i;
 
 	i = 0;
-	temp = get_next_line(fd);
+	temp = get_all_lines(fd);
 	if (!temp)
 		return (0);
 	data->tmp = ft_strdup(temp);

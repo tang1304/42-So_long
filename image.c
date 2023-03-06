@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/03 16:01:25 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 09:09:39 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	put_img(t_data *data, char *path, int x, int y)
 }
 
 /* Puts the floor sprite everywhere */
-int	put_background(t_data *data)
+static int	put_background(t_data *data)
 {
 	int		x;
 	int		y;
@@ -53,7 +53,7 @@ int	put_background(t_data *data)
 	return (1);
 }
 
-int	put_walls(t_data *data, int x, int y)
+static int	put_walls(t_data *data, int x, int y)
 {
 	int	tmp;
 

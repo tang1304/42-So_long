@@ -13,7 +13,7 @@ SRCS = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 		ft_lstsize.c ft_lstlast.c ft_lstdelone.c ft_lstadd_front.c \
 		ft_lstadd_back.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 		ft_printf.c ft_print_functions.c ft_putchar.c \
-		get_next_line.c get_next_line_utils.c
+		get_next_line.c get_next_line_utils.c get_all_lines.c
 OBJ = ${SRCS:.c=.o}
 NAME = libft.a
 RM = rm -f

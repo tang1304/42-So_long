@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/21 14:27:15 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 09:11:19 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,9 @@ void	path_check(t_data *data, int x, int y);
 /*	image_bonus.c	*/
 int		put_img(t_data *data, char *path, int x, int y);
 int		put_map(t_data *data);
-int		put_background(t_data *data);
+int		put_walls(t_data *data, int x, int y);
+
+/*	image2_bonus.c	*/
 int		choose_img(t_data *data, char c, int x, int y);
 
 /*	key_hook_bonus.c	*/

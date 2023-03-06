@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/03 16:04:31 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 09:08:17 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	put_img(t_data *data, char *path, int x, int y)
 }
 
 /* Puts the floor sprite everywhere */
-int	put_background(t_data *data)
+static int	put_background(t_data *data)
 {
 	int		x;
 	int		y;
@@ -74,36 +74,6 @@ int	put_walls(t_data *data, int x, int y)
 		tmp = put_img(data, WALL_U, x, y);
 	else if (x != data->map.width - 1 && x != 0 && y == data->map.height - 1)
 		tmp = put_img(data, WALL_D, x, y);
-	if (tmp == 0)
-		return (0);
-	return (1);
-}
-
-/* selects the good sprite depending on the char */
-int	choose_img(t_data *data, char c, int x, int y)
-{
-	int	tmp;
-
-	if (c == '1' && (x == 0 || x == data->map.width - 1 || y == 0 \
-			|| y == data->map.height - 1))
-		tmp = put_walls(data, x, y);
-	else if (c == '1')
-		tmp = put_img(data, OBSTACLE, x, y);
-	else if (c == 'C')
-		tmp = put_img(data, COLLECTIBLE, x, y);
-	else if (c == 'P')
-		tmp = put_img(data, P_FRONT_STILL, x, y);
-	else if (c == 'E')
-	{
-		tmp = put_img(data, EXIT_OFF, x, y);
-		data->map.e_x = x;
-		data->map.e_y = y;
-	}
-	else if (c == 'D')
-	{
-		tmp = put_img(data, D_STILL, x, y);
-		data->d_nbr++;
-	}
 	if (tmp == 0)
 		return (0);
 	return (1);
