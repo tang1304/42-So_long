@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:49:15 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/03 16:05:30 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/08/14 09:42:34 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	direction(t_data *data, int keycode)
 {
 	int	tmp;
 
+	tmp = 0;
 	if (keycode == W)
 		tmp = put_img(data, P_BACK_STILL, data->map.p_x, data->map.p_y);
 	else if (keycode == S)

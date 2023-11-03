@@ -6,12 +6,12 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:39:18 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/06 09:11:19 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/08/14 09:40:33 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
-# define SO_LONG__BONUS_H
+# define SO_LONG_BONUS_H
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>

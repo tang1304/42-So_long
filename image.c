@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:12:23 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/06 09:09:39 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/08/14 13:03:50 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	put_img(t_data *data, char *path, int x, int y)
 	{
 		ft_printf("Error\nProblem loading xpm file\n");
 		return (0);
-	}	
+	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, x, y);
 	mlx_destroy_image(data->mlx, data->img.img);
 	return (1);

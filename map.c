@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:14:30 by tgellon           #+#    #+#             */
-/*   Updated: 2023/03/06 09:02:56 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/08/14 11:51:00 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	map_char_check(t_data *data)
 /*Checks the .ber format*/
 static int	map_format(char *argv)
 {
-	int		i;
+	int	i;
 
 	i = ft_strlen(argv);
 	if (argv[i - 1] == 'r' && argv[i - 2] == 'e' && argv[i - 3] == 'b' \

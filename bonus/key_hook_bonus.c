@@ -6,7 +6,7 @@
 /*   By: tgellon <tgellon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:26:21 by tgellon           #+#    #+#             */
-/*   Updated: 2023/02/14 14:39:26 by tgellon          ###   ########lyon.fr   */
+/*   Updated: 2023/08/14 09:42:02 by tgellon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	keyhook(int keycode, t_data *data)
 {
 	int	tmp;
 
+	tmp = 0;
 	if (keycode == ESC)
 	{
 		ft_printf("You gave up ! LLLLLLLLOSER !!!\n");
